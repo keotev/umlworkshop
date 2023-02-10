@@ -1,0 +1,7 @@
+public class Main {
+  public static void main(String[] args) {
+    MovieManager manager = new MovieManager();
+    MovieUI ui = new MovieUI(manager);
+    ui.run();
+  }
+}

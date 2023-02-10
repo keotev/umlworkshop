@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+
+public class MovieManager {
+  private ArrayList<Movie> movies;
+  
+  public MovieManager() {
+    movies = new ArrayList<>();
+  }
+  
+  public void addMovie(Movie movie) {
+    movies.add(movie);
+  }
+  
+  public void removeMovie(Movie movie) {
+    movies.remove(movie);
+  }
+  
+  public ArrayList<Movie> getMovies() {
+    return movies;
+  }
+  
+  public Movie getMovie(int index) {
+    return movies.get(index);
+  }
+}

@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class MovieUI {
+  private MovieManager manager;
+  private Scanner input;
+  
+  public MovieUI(MovieManager manager) {
+    this.manager = manager;
+    input = new Scanner(System.in);
+  }
+  
+  public void displayMenu() {
+    System.out.println("1. Add movie");
+    System.out.println("2. Remove movie");
+    System.out.println("3. Display movies");
+    System.out.println("4. Exit");
+  }
+  
+  public void addMovie() {
+    System.out.print("Enter movie title: ");
+    String title = input.nextLine();
+    System.out.print("Enter movie director: ");
+    String director = input.nextLine();
+    System.out.print("Enter movie year: ");
+    int year = input.nextInt();
+    System.out.print("Enter movie rating: ");
+    int rating = input.nextInt();
+    manager.addMovie(new Movie(title, director, year, rating));
+  }
+  
+  public void removeMovie() {
+    System.out.print("Enter movie index: ");
+    int index = input.nextInt();
+    manager.removeMovie(manager.getMovie(index));
+  }
+  
+  public void displayMovies() {
+    for (int i = 0; i < manager.getMovies().size(); i++) {
+      System.out.println(i + ". " + manager.getMovie(i).getTitle());
+    }
+  }
+  
+  public void run() {
+    int choice = 0;
+    while (choice != 4) {
+      displayMenu();
+      System.out.print("Enter your choice: ");
+      choice = input.nextInt();
+      switch (choice) {
+        case 1:
+          addMovie();
+          break;
+        case 2:
+          removeMovie();
+          break;
+        case 3:
+          displayMovies();
+          break;
+        case 4:
+          break;
+        default:
+          System.out.println("Invalid choice");
+          break;
+      }
+    }
+  }
+}
